@@ -1,4 +1,3 @@
-Data = new Mongo.Collection('data');
 
 if (Meteor.isClient) {
 
@@ -23,10 +22,9 @@ if (Meteor.isServer) {
 
     Meteor.methods ({
       getData: function() {
-        websiteData = Scrape.website("https://twitter.com/DylanMSanders");
-        var result = JSON.stringify(websiteData);
-        console.log(result);
-        return websiteData.title;
+        websiteData = Scrape.website("https://twitter.com/DylanMSanders");    //Use Scrape.website with any URL
+        console.log(JSON.stringify(websiteData));                             //Log text result
+        return websiteData.title;                                             //Return website's title
       }
     });
 
