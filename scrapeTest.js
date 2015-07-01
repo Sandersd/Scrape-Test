@@ -9,9 +9,12 @@ if (Meteor.isClient) {
 
   });
 
-  Template.main.helpers({
-    data: function () {
-      return Session.get('data');
+  Template.result.helpers({
+    title: function () {
+      return Session.get('data').title;
+    },
+    description: function () {
+      return Session.get('data').description;
     }
   });
 
@@ -24,7 +27,7 @@ if (Meteor.isServer) {
       getData: function() {
         websiteData = Scrape.website("https://twitter.com/DylanMSanders");    //Use Scrape.website with any URL
         console.log(JSON.stringify(websiteData));                             //Log text result
-        return websiteData.title;                                             //Return website's title
+        return websiteData;                                                   //Return website's json
       }
     });
 
